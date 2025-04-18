@@ -15,7 +15,7 @@ const app: Express = express();
 
 // Configure CORS with specific options
 const corsOptions = {
-  origin: 'http://localhost:5173',
+  origin: process.env.ORIGIN,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
 };
