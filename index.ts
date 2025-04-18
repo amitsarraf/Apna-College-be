@@ -18,10 +18,12 @@ const corsOptions = {
   origin: process.env.ORIGIN,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true,
 };
 
 // Apply CORS middleware before any routes
 app.use(cors(corsOptions));
+app.options('*', cors(corsOptions));
 app.use(express.json());
 app.use('/api', authRoute);
 app.use('/api', verifyJWT, userRoute);
