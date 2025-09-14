@@ -7,6 +7,7 @@ export interface IUser {
   lastName: string;
   email: string;
   password: string;
+  role: string;
 }
 
 const generateUserId = async (): Promise<string> => {
@@ -24,14 +25,14 @@ const UserSchema: Schema = new Schema(
       type: String,
       unique: true,
     },
-    
-    firstName: {
+
+    role:{
       type: String,
-      required: false,
+      enum: ["ADMIN" , "CANDIDATE"]
     },
-    lastName: {
+    name: {
       type: String,
-      required: false,
+      required: true,
     },
     email: {
       type: String,

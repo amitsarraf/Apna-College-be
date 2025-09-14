@@ -9,13 +9,13 @@ import { getAccessToken, getRefreshToken } from '../../helpers/getToken';
 
 const register = async (req: Request, res: Response) => {
   const {
-    firstName,
-    lastName,
+    name,
     email,
     password,
+    role
   } = req.body;
 
-  if (!firstName || !lastName || !email || !password) {
+  if (!name || !email || !password || !role) {
     return res.status(400).json({ error: 'All fields are required' });
   }
 
@@ -33,10 +33,10 @@ const register = async (req: Request, res: Response) => {
 
     const user = new User({
       _id: new mongoose.Types.ObjectId(),
-      firstName,
-      lastName,
+      name,
       email,
       password: hashedPassword,
+      role
     });
 
     const savedUser = await user.save();

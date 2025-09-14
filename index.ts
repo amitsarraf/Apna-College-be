@@ -5,7 +5,8 @@ import { verifyJWT } from './src/mvc/middlewares/auth';
 import authRoute from './src/mvc/routes/auth.routes';
 import userRoute from './src/mvc/routes/user.routes';
 import mongoose from 'mongoose';
-import topicRoute from './src/mvc/routes/topic.routes';
+import interviewRoute from './src/mvc/routes/interview.routes';
+import submissionRoute from './src/mvc/routes/submission.routes';
 
 
 dotenv.config();
@@ -25,7 +26,8 @@ app.use(cors(corsOptions));
 app.use(express.json());
 app.use('/api', authRoute);
 app.use('/api', verifyJWT, userRoute);
-app.use('/api', verifyJWT, topicRoute);
+app.use('/api', verifyJWT, interviewRoute);
+app.use('/api', verifyJWT, submissionRoute);
 
 
 mongoose.set('strictQuery', false);
