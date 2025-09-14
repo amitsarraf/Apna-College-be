@@ -59,7 +59,7 @@ const login = async (req: Request, res: Response) => {
   try {
     const user = await User.findOne({ email }).select('+password');
     if (!user) {
-      return res.status(404).json({ error: 'Oops! Invalid Email Address. Please double-check your email address and try again.' });
+      return res.status(404).json({ error: 'Invalid Credentials' });
     }
     if (!password) {
       return res.status(400).json({ error: 'Invalid Credentials' });
